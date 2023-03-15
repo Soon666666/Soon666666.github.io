@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User Registration</title>
+    <script>
+      function validateForm() {
+        var username = document.forms["register"]["username"].value;
+        var password = document.forms["register"]["password"].value;
+        var confirm_password = document.forms["register"]["confirm_password"].value;
+        var email = document.forms["register"]["email"].value;
+
+        // Check if username starts with a letter
+        if (!/^[a-zA-Z]/.test(username)) {
+          alert("Username must start with a letter!");
+          return false;
+        }
+
+        // Check password length
+        if (password.length < 6 || password.length > 8) {
+          alert("Password must be 6-8 characters long!");
+          return false;
+        }
+
+        // Check if passwords match
+        if (password != confirm_password) {
+          alert("Passwords do not match!");
+          return false;
+        }
+
+        // Check email format
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          alert("Invalid email format!");
+          return false;
+        }
+
+        return true;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>User Registration Form</h1>
+    <form name="register" onsubmit="return validateForm()">
+      <label>用户名:</label>
+      <input type="text" name="username" required><br><br>
+
+      <label>密码:</label>
+      <input type="password" name="password" required><br><br>
+
+      <label>确认密码:</label>
+      <input type="password" name="confirm_password" required><br><br>
+
+      <label>邮箱:</label>
+      <input type="email" name="email" required><br><br>
+
+      <input type="submit" value="Register">
+    </form>
+  </body>
+</html>

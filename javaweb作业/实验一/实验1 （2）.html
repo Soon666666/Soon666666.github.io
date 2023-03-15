@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User Registration Form</title>
+	<script type="text/javascript">
+		function validateForm() {
+			// 获取表单输入的值
+			var username = document.forms["registration"]["username"].value;
+			var password = document.forms["registration"]["password"].value;
+			var confirmPassword = document.forms["registration"]["confirm_password"].value;
+			var gender = document.forms["registration"]["gender"].value;
+			var hobbies = document.forms["registration"]["hobbies[]"];
+			var province = document.forms["registration"]["province"].value;
+			var city = document.forms["registration"]["city"].value;
+			var email = document.forms["registration"]["email"].value;
+			var image = document.forms["registration"]["image"].value;
+
+			// 验证用户名是否以字母开头
+			if (!/^[a-zA-Z]/.test(username)) {
+				alert("必须以字母开头.");
+				return false;
+			}
+
+			// 验证密码是否在6到8位之间
+			if (password.length < 6 || password.length > 8) {
+				alert("必须在6到8位之间");
+				return false;
+			}
+
+			// 验证确认密码是否和密码一致
+			if (password != confirmPassword) {
+				alert("密码须一致.");
+				return false;
+			}
+
+			// 验证邮箱格式
+			if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+				alert("邮箱格式不正确.");
+				return false;
+			}
+
+			// 打印表单输入的值
+			console.log("Username: " + username);
+			console.log("Password: " + password);
+			console.log("Gender: " + gender);
+			console.log("Hobbies:");
+			for (var i = 0; i < hobbies.length; i++) {
+				if (hobbies[i].checked) {
+					console.log("  " + hobbies[i].value);
+				}
+			}
+			console.log("Province: " + province);
+			console.log("City: " + city);
+			console.log("Email: " + email);
+			console.log("Image: " + image);
+
+			// 表单验证通过，提交表单
+			return true;
+		}
+	</script>
+</head>
+<body>
+	<h1>用户注册</h1>
+	<form name="registration" onsubmit="return validateForm()">
+		<label>用户名:</label>
+		<input type="text" name="username" required><br><br>
+
+		<label>密码:</label>
+		<input type="password" name="password" required><br><br>
+
+		<label>确认密码:</label>
+		<input type="password" name="confirm_password" required><br><br>
+
+		<label>性别:</label>
+		<input type="radio" name="gender" value="male" required>男
+		<input type="radio" name="gender" value="female" required>女<br><br>
+
+		<label>爱好:</label>
+		<input type="checkbox" name="hobbies[]" value="reading">读书
+		<input type="checkbox" name="hobbies[]" value="swimming">游泳
+		<input type="checkbox" name="hobbies[]" value="gaming">游戏
+		<input type="checkbox" name="hobbies []" value="Traveling">旅游<br><br>
+
+        <label>来自:</label>
+        <select name="province" required>
+            <option value="">--省或直辖市--</option>
+            <option value="Beijing">Beijing</option>
+            <option value="Shanghai">Shanghai</option>
+            <option value="Guangdong">Guangdong</option>
+            <option value="Zhejiang">Zhejiang</option>
+            <option value="Jiangsu">Jiangsu</option>
+            <option value="Fujian">Fujian</option>
+            <option value="Shandong">Shandong</option>
+            <option value="Hebei">Hebei</option>
+            <option value="Henan">Henan</option>
+            <option value="Hubei">Hubei</option>
+            <option value="Hunan">Hunan</option>
+            <option value="Anhui">Anhui</option>
+            <option value="Jiangxi">Jiangxi</option>
+            <option value="Sichuan">Sichuan</option>
+            <option value="Chongqing">Chongqing</option>
+            <option value="Shaanxi">Shaanxi</option>
+            <option value="Hainan">Hainan</option>
+            <option value="Guizhou">Guizhou</option>
+            <option value="Yunnan">Yunnan</option>
+            <option value="Liaoning">Liaoning</option>
+            <option value="Jilin">Jilin</option>
+            <option value="Heilongjiang">Heilongjiang</option>
+            <option value="Taiwan">Taiwan</option>
+            <option value="Hong Kong">Hong Kong</option>
+            <option value="Macau">Macau</option>
+        </select>
+
+          <select name="city" required>
+            <option value="">--城市--</option>
+            <option value="Beijing">Beijing</option>
+            <option value="Shanghai">Shanghai</option>
+            <option value="Guangzhou">Guangzhou</option>
+            <option value="Hangzhou">Hangzhou</option>
+            <option value="Nanjing">Nanjing</option>
+            <option value="Xiamen">Xiamen</option>
+            <option value="Qingdao">Qingdao</option>
+            <option value="Tianjin">Tianjin</option>
+            <option value="Zhengzhou">Zhengzhou</option>
+            <option value="Wuhan">Wuhan</option>
+            <option value="Changsha">Changsha</option>
+            <option value="Hefei">Hefei</option>
+            <option value="Nanchang">Nanchang</option>
+            <option value="Chengdu">Chengdu</option>
+            <option value="Chongqing">Chongqing</option>
+            <option value="Xi'an">Xi'an</option>
+            <option value="Haikou">Haikou</option>
+            <option value="Guiyang">Guiyang</option>
+            <option value="Kunming">Kunming</option>
+            <option value="Shenyang">Shenyang</option>
+            <option value="Changchun">Changchun</option>
+            <option value="Harbin">Harbin</option>
+            <option value="Taipei">Tai pei</option>
+            <option value="Hong Kong">Hong Kong</option>
+            <option value="Macau">Macau</option>
+                </select><br><br>
+            
+       
+    
+
+       
+
+                <label>邮箱:</label>
+                <input type="email" name="email" required><br><br>
+            
+                <label>上传图片:</label>
+                <input type="file" name="image"><br><br>
+                <input type="submit" value="注册">
+             
+            </form>
+        </body>
+        </html>                
